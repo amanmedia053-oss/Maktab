@@ -1,3 +1,5 @@
+// Flutter 3.47 still exposes Material widgets through this stable SDK library.
+// ignore_for_file: deprecated_member_use
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'data/local_database.dart';
@@ -80,9 +82,9 @@ class Dashboard extends StatelessWidget {
       ]))),
       SliverToBoxAdapter(child: Container(
         margin: const EdgeInsets.fromLTRB(20, 15, 20, 22), padding: const EdgeInsets.all(23),
-        decoration: BoxDecoration(gradient: const LinearGradient(colors: [Color(0xFF205A45), Color(0xFF123B30)], begin: Alignment.topRight, end: Alignment.bottomLeft), borderRadius: BorderRadius.circular(28), boxShadow: [BoxShadow(color: green.withOpacity(.18), blurRadius: 22, offset: const Offset(0, 9))]),
+        decoration: BoxDecoration(gradient: const LinearGradient(colors: [Color(0xFF205A45), Color(0xFF123B30)], begin: Alignment.topRight, end: Alignment.bottomLeft), borderRadius: BorderRadius.circular(28), boxShadow: [BoxShadow(color: green.withValues(alpha: .18), blurRadius: 22, offset: const Offset(0, 9))]),
         child: Stack(children: [
-          Positioned(left: 0, top: 0, child: Icon(Icons.auto_stories_rounded, size: 90, color: Colors.white.withOpacity(.07))),
+          Positioned(left: 0, top: 0, child: Icon(Icons.auto_stories_rounded, size: 90, color: Colors.white.withValues(alpha: .07))),
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             const Text('ښه راغلاست!', style: TextStyle(color: Color(0xFFE8D4A8), fontWeight: FontWeight.w700)),
             const SizedBox(height: 9),
@@ -126,7 +128,7 @@ class StatCard extends StatelessWidget {
     future: db.count(table),
     builder: (context, snap) => Container(
       padding: const EdgeInsets.all(15),
-      decoration: BoxDecoration(color: Theme.of(context).cardTheme.color ?? Colors.white, borderRadius: BorderRadius.circular(22), border: Border.all(color: Theme.of(context).dividerColor.withOpacity(.08))),
+      decoration: BoxDecoration(color: Theme.of(context).cardTheme.color ?? Colors.white, borderRadius: BorderRadius.circular(22), border: Border.all(color: Theme.of(context).dividerColor.withValues(alpha: .08))),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Container(width: 38, height: 38, decoration: BoxDecoration(color: const Color(0xFFE4EFE8), borderRadius: BorderRadius.circular(12)), child: Icon(icon, color: green)),
         Text(snap.hasData ? '${snap.data}' : '—', style: const TextStyle(fontSize: 23, fontWeight: FontWeight.w900)),
